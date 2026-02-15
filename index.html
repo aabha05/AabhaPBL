@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBL Presentation | 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* TIMER UI - FIXED CONTRAST */
+        #timerContainer { background: #ffffff; color: #020617; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 3px solid #3b82f6; z-index: 1000; }
+        @keyframes flicker { 0%, 100% { background-color: #ffffff; } 50% { background-color: #fca5a5; } }
+        .timer-warning { animation: flicker 1s infinite; border: 3px solid #ef4444 !important; color: #b91c1c !important; }
+        .timer-stop { background-color: #991b1b !important; color: #ffffff !important; border: 3px solid #f87171 !important; animation: none; }
+    </style>
+</head>
+<body>
+
+
+    <div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4 transition-all">
+        <i class="fas fa-hourglass-start text-blue-600 text-2xl" id="timerIcon"></i>
+        <span id="displayTime" class="text-4xl font-black font-mono tracking-tighter">00:00</span>
+    </div>
+
+    <nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="bg-white p-1 rounded flex items-center justify-center shadow-md" style="height: 48px; width: 48px;">
+                <img src="mujlogo.jpg" alt="MUJ" class="h-full w-auto object-contain" onerror="this.src='https://via.placeholder.com/50?text=MUJ'">
+            </div>
+            <div class="flex flex-col text-left">
+                <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
+                <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Dept. of Computer Science & Engineering</span>
+            </div>
+        </div>
+        <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-widest font-bold opacity-70">
+            <a href="#problem" class="hover:text-blue-400 transition">Problem</a>
+            <a href="#methodology" class="hover:text-blue-400 transition">Methodology</a>
+            <a href="#results" class="hover:text-blue-400 transition">Results</a>
+            <a href="#team" class="hover:text-blue-400 transition">Team</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
+        
+        <section class="text-center">
+            <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">ID:2427030370</div>
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight"><span class="gradient-text uppercase">Smart Mirror for Well Being</span></h1>
+            <p class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left">
+                "To design an intelligent mirror that monitors posture and provides positive affirmations, fostering self-help habits and daily mindfulness.
+"
+            </p>
+        </section>
+
+        <section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
+            <div class="glass p-10 rounded-[2.5rem] flex flex-col gap-6 border-l-4 border-blue-600">
+
+    <!-- Image -->
+<img src="mirror.jpeg"
+     alt="Smart mirror posture illustration"
+     class="w-full max-h-[420px] object-contain rounded-2xl shadow-xl bg-black/20 p-2">
+
+
+
+
+    <!-- Title -->
+    <h2 class="text-3xl font-extrabold">Problem Statement</h2>
+
+    <!-- Text -->
+    <p class="text-slate-300 leading-relaxed text-justify">
+        In today’s screen-dominated world, many individuals unknowingly develop poor posture,
+        experience physical strain, and struggle with negative self-talk and inconsistent
+        self-care routines. Long hours spent on devices often disconnect people from their
+        own physical alignment and mental well-being.
+    </p>
+
+    <p class="text-slate-400 leading-relaxed text-justify">
+        The challenge is to create intelligent technology that blends seamlessly into daily
+        life—offering gentle posture corrections, meaningful positive affirmations, and
+        subtle self-care reminders—while maintaining privacy and enhancing the human
+        experience.
+    </p>
+
+</div>
+
+            <div class="space-y-6">
+                <div class="glass p-8 rounded-3xl border-r-4 border-blue-500/50">
+    <h3 class="text-blue-400 font-extrabold text-xs uppercase tracking-widest mb-4">
+        Literature Review
+    </h3>
+
+    <p class="text-sm text-slate-300 leading-relaxed text-justify">
+        The <span class="text-blue-400 font-semibold">Intelligent Mirror</span> is designed as an
+        interactive wellness companion that enhances both physical and mental well-being.
+        By integrating artificial intelligence and computer vision, the system provides
+        real-time posture correction through subtle prompts or gentle audio cues whenever
+        poor alignment is detected. In addition to physical guidance, the mirror supports
+        emotional wellness by displaying
+        <span class="text-purple-400 font-semibold">personalized positive affirmations</span>
+        that counter negative self-talk and encourage confidence.
+        These affirmations are tailored to the user’s goals and mood, creating a more
+        uplifting daily experience. Furthermore, the AI offers
+        <span class="text-blue-300 font-semibold">self-care suggestions</span>
+        such as reminders to hydrate, stretch, or take mindful breaths.
+        Together, these features transform a conventional mirror into an intelligent
+        system that promotes better posture, a positive mindset, and balanced habits.
+    </p>
+</div>
+
+                <div class="glass p-8 rounded-3xl border-r-4 border-purple-500/50 space-y-6">
+
+    <h3 class="text-purple-400 font-extrabold text-xs uppercase tracking-widest">
+        Research Gap / Innovation
+    </h3>
+
+    <!-- Conceptual Innovation -->
+    <div class="space-y-2">
+        <h4 class="text-blue-400 font-bold text-sm">
+            1. Conceptual Innovation
+        </h4>
+        <p class="text-sm text-slate-300 leading-relaxed text-justify">
+            Traditional mirrors—and even most smart mirrors—only reflect appearance,
+            often leaving the mind free to overthink or focus on flaws. This project
+            reimagines the mirror as a tool for both mental and physical well-being.
+            Instead of being passive, the mirror provides posture correction and
+            positive affirmations—like someone quietly rooting for you each morning.
+        </p>
+    </div>
+
+    <!-- Technical Innovation -->
+    <div class="space-y-2">
+        <h4 class="text-purple-400 font-bold text-sm">
+            2. Technical Innovation
+        </h4>
+        <p class="text-sm text-slate-300 leading-relaxed text-justify">
+            Most smart mirrors rely on IoT setups using a Raspberry Pi, external
+            display, and multiple peripherals. This project replaces that architecture
+            with a smartphone running a custom mirror application powered by machine
+            learning. The phone integrates the processor, display, camera,
+            microphone, and battery into a single compact device, making the system
+            more powerful, efficient, cost-effective, and easier to deploy than
+            traditional Raspberry Pi–based designs.
+        </p>
+    </div>
+
+</div>
+
+        </section>
+        <section id="methodology" class="space-y-12">
+
+    <h2 class="text-4xl font-black text-center uppercase tracking-tight">
+        System <span class="text-blue-500">Methodology</span>
+    </h2>
+
+    <!-- Version Cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+
+        <!-- Version 1 -->
+        <div class="glass p-6 rounded-3xl text-center space-y-3">
+            <i class="fas fa-mobile-alt text-blue-500 text-3xl"></i>
+            <h3 class="font-bold uppercase text-xs tracking-widest">
+                Version 1
+            </h3>
+            <p class="text-sm text-slate-200 font-semibold">
+                Custom OS + Mirror Display
+            </p>
+            <p class="text-xs text-slate-400 leading-relaxed text-justify">
+                Converts a smartphone into a dedicated mirror device using
+                <span class="text-blue-400 font-semibold">ADB, Fastboot, LineageOS, Kotlin, and Android Studio</span>,
+                building skills in system-level Android development and embedded UI design.
+            </p>
+        </div>
+
+        <!-- Version 2 -->
+        <div class="glass p-6 rounded-3xl text-center space-y-3">
+            <i class="fas fa-user text-purple-500 text-3xl"></i>
+            <h3 class="font-bold uppercase text-xs tracking-widest">
+                Version 2
+            </h3>
+            <p class="text-sm text-slate-200 font-semibold">
+                Face Detection
+            </p>
+            <p class="text-xs text-slate-400 leading-relaxed text-justify">
+                Adds real-time face detection using
+                <span class="text-purple-400 font-semibold">Camera API, ML Kit, and OpenCV</span>,
+                enabling interactive features and building computer vision skills.
+            </p>
+        </div>
+
+        <!-- Version 3 -->
+        <div class="glass p-6 rounded-3xl text-center space-y-3">
+            <i class="fas fa-walking text-blue-400 text-3xl"></i>
+            <h3 class="font-bold uppercase text-xs tracking-widest">
+                Version 3
+            </h3>
+            <p class="text-sm text-slate-200 font-semibold">
+                Posture Correction
+            </p>
+            <p class="text-xs text-slate-400 leading-relaxed text-justify">
+                Implements posture analysis using
+                <span class="text-blue-300 font-semibold">MediaPipe Pose</span>
+                and geometric calculations to detect misalignment and provide corrective feedback.
+            </p>
+        </div>
+
+        <!-- Version 4 -->
+        <div class="glass p-6 rounded-3xl text-center space-y-3">
+            <i class="fas fa-microphone text-purple-400 text-3xl"></i>
+            <h3 class="font-bold uppercase text-xs tracking-widest">
+                Version 4
+            </h3>
+            <p class="text-sm text-slate-200 font-semibold">
+                Voice + AI Advice
+            </p>
+            <p class="text-xs text-slate-400 leading-relaxed text-justify">
+                Introduces voice interaction using
+                <span class="text-purple-400 font-semibold">SpeechRecognizer, Text-to-Speech, and AI APIs</span>
+                to deliver personalized advice and affirmations.
+            </p>
+        </div>
+
+        <!-- Version 5 -->
+        <div class="glass p-6 rounded-3xl text-center space-y-3">
+            <i class="fas fa-cloud text-blue-500 text-3xl"></i>
+            <h3 class="font-bold uppercase text-xs tracking-widest">
+                Version 5
+            </h3>
+            <p class="text-sm text-slate-200 font-semibold">
+                Cloud Analytics
+            </p>
+            <p class="text-xs text-slate-400 leading-relaxed text-justify">
+                Connects the system to the cloud using
+                <span class="text-blue-400 font-semibold">Firebase and analytics dashboards</span>
+                to store data and generate user progress insights.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Architecture Image -->
+    <div class="glass p-8 rounded-[2.5rem] text-center space-y-6">
+        <h3 class="text-blue-400 font-bold uppercase text-xs tracking-widest">
+            System Architecture
+        </h3>
+
+        <img src="architecture.jpeg"
+             alt="Smart Mirror Architecture"
+             class="w-full max-w-4xl mx-auto rounded-3xl shadow-2xl border border-white/10"
+             onerror="this.src='https://via.placeholder.com/900x400?text=System+Architecture'">
+    </div>
+
+</section>
+
+
+
+        <section id="results" class="space-y-12">
+
+    <!-- Section Title -->
+    <h2 class="text-4xl font-black text-center uppercase tracking-tight">
+        Results & <span class="text-blue-500">Analysis</span>
+    </h2>
+
+    <div class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500 space-y-12">
+
+        <!-- Comparison Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border-collapse">
+                <thead>
+                    <tr class="text-xs uppercase tracking-widest text-slate-400 border-b border-white/10">
+                        <th class="py-3">Criteria</th>
+                        <th class="py-3 text-center text-slate-300">Traditional</th>
+                        <th class="py-3 text-center text-purple-400">Proposed</th>
+                    </tr>
+                </thead>
+                <tbody class="text-slate-300">
+                    <tr class="border-b border-white/5">
+                        <td class="py-3">Cost</td>
+                        <td class="text-center">5</td>
+                        <td class="text-center text-purple-400 font-semibold">9</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-3">Simplicity</td>
+                        <td class="text-center">4</td>
+                        <td class="text-center text-purple-400 font-semibold">9</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-3">Processing Power</td>
+                        <td class="text-center">6</td>
+                        <td class="text-center text-purple-400 font-semibold">8</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3">System Stability</td>
+                        <td class="text-center text-blue-400 font-semibold">8</td>
+                        <td class="text-center">6</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-3">Wellness Features</td>
+                        <td class="text-center">3</td>
+                        <td class="text-center text-purple-400 font-semibold">10</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-3">Integration</td>
+                        <td class="text-center">5</td>
+                        <td class="text-center text-purple-400 font-semibold">9</td>
+                    </tr>
+                    
+                    
+                    <tr class="border-b border-white/5">
+                        <td class="py-3">Hardware Customization</td>
+                        <td class="text-center text-blue-400 font-semibold">9</td>
+                        <td class="text-center">4</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <!-- Key Observation -->
+            <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+                <h3 class="text-blue-400 font-bold uppercase text-xs tracking-widest mb-4">
+                    Key Observation
+                </h3>
+                <p class="text-slate-300 leading-relaxed text-justify">
+                    The proposed smart mirror achieves stronger overall
+                    performance through better integration, lower cost,
+                    higher processing capability, and a focused approach
+                    toward user well-being.
+                </p>
+            </div>
+
+            <!-- Final Conclusion -->
+            <div class="p-8 rounded-3xl bg-purple-500/10 border border-purple-400/20">
+                <h3 class="text-purple-400 font-bold uppercase text-xs tracking-widest mb-4">
+                    Final Conclusion
+                </h3>
+                <p class="text-slate-300 leading-relaxed text-justify">
+                    While traditional smart mirrors offer greater hardware
+                    flexibility, the proposed smartphone-based system
+                    delivers a more compact, efficient, and cost-effective
+                    solution with improved performance and stronger focus
+                    on daily user well-being.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <section id="team" class="text-center pt-10 border-t border-slate-900">
+            <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
+            <div class="flex flex-wrap justify-center gap-10">
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
+                    <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
+                    <p class="font-black text-xl text-slate-100">Dr. Aditya Sinha</p>
+                </div>
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
+                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 1</p>
+                    <p class="font-black text-xl text-slate-100">Aabha Rajpal</p>
+                    <p class="text-[10px] text-slate-500 mt-1">2427030370</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 text-center bg-black/40 border-t border-slate-900">
+        <p class="text-slate-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Manipal University Jaipur</p>
+        <p class="text-slate-500 text-[9px] font-medium tracking-[0.2em] uppercase opacity-50">Department of Computer Science & Engineering • 2026</p>
+    </footer>
+
+    <script>
+let sec = 0;
+let timer = null;
+
+function startTimer() {
+    const display = document.getElementById('displayTime');
+    const container = document.getElementById('timerContainer');
+    const icon = document.getElementById('timerIcon');
+
+    timer = setInterval(() => {
+        sec++;
+        let m = Math.floor(sec / 60);
+        let s = sec % 60;
+
+        display.innerText =
+            `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+        if (sec >= 480 && sec < 600) {
+            container.classList.add('timer-warning');
+            icon.classList.remove('fa-hourglass-start');
+            icon.classList.add('fa-hourglass-half');
+        }
+
+        if (sec >= 600) {
+            clearInterval(timer);
+            container.classList.remove('timer-warning');
+            container.classList.add('timer-stop');
+            display.innerText = "10:00";
+            icon.classList.remove('fa-hourglass-half');
+            icon.classList.add('fa-hourglass-end');
+        }
+    }, 1000);
+}
+
+window.addEventListener("DOMContentLoaded", startTimer);
+</script>
+
+</body>
+</html>

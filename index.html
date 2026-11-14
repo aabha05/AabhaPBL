@@ -59,7 +59,7 @@
             </p>
             <div class="mt-8 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-semibold uppercase tracking-widest">
                 <i class="fas fa-microchip"></i>
-                Current Milestone: V1-A — Raspberry Pi Prototype
+                Raspberry Pi 4 · Computer Vision · Posture &amp; Well-Being
             </div>
         </section>
 
@@ -104,7 +104,7 @@
         The <span class="text-blue-400 font-semibold">Intelligent Mirror</span> is designed as an
         interactive wellness companion that enhances both physical and mental well-being.
         By integrating computer vision with a Raspberry Pi-based platform, the system captures
-        live camera frames, detects a user's presence, and — in later versions — analyses
+        live camera frames, detects a user's presence, and analyses
         posture through pose estimation. In addition to physical guidance, the mirror will
         support emotional wellness by displaying
         <span class="text-purple-400 font-semibold">personalized positive affirmations</span>
@@ -147,18 +147,17 @@
         <p class="text-sm text-slate-300 leading-relaxed text-justify">
             The very first prototype ran directly on my
             <span class="text-blue-300 font-semibold">Samsung phone</span> — a custom Android
-            app (Android Studio + Kotlin) using CameraX and ML Kit, with face detection already
-            working on-device. This proved the mirror concept was possible with a single,
+            app (Android Studio + Kotlin) using CameraX and ML Kit, with on-device
+            face detection. This proved the mirror concept was possible with a single,
             self-contained device.
         </p>
         <p class="text-sm text-slate-300 leading-relaxed text-justify">
-            For the basic prototype after that, this project moved onto a
+            The project then moved onto a
             <span class="text-purple-400 font-semibold">Raspberry Pi 4 Model B (8 GB RAM)</span>,
-            paired with an IDUINO 5-inch display and a Logitech C270 webcam — a more
-            classic IoT-style smart mirror architecture. OpenCV now handles the camera pipeline,
-            the mirror flip effect, and face detection on this setup, and everything demonstrated
-            so far — live feed, mirror effect, date/time, presence detection — runs on the
-            Raspberry Pi.
+            paired with an IDUINO 5-inch touchscreen and a Logitech C270 webcam — a more
+            classic IoT-style smart mirror architecture. OpenCV handles the camera pipeline,
+            the mirror flip effect and face detection, and a MediaPipe pose-landmark model
+            running on the TensorFlow Lite runtime provides the body landmarks for posture analysis.
         </p>
     </div>
 
@@ -172,48 +171,46 @@
     </h2>
 
     <p class="text-center text-slate-400 max-w-3xl mx-auto text-sm leading-relaxed">
-        The first prototype ran on my Samsung phone, with face detection already working
-        on-device. For the basic prototype after that, this was the version — I moved to a
-        Raspberry Pi 4, a display and a webcam for everything, from the mirror
-        interface to face detection. The project is being developed in incremental versions
-        (Phase 0 → V3) so each stage stays testable and demonstrable before the next is added.
+        The first prototype ran on a Samsung phone with on-device face detection.
+        The project then moved to a Raspberry Pi 4, a touchscreen and a webcam, which allow sensors,
+        a mirror-sized display and an appliance-style start-up. The system is developed in incremental
+        versions (Phase 0 → V3) so each stage stays testable and demonstrable on its own.
     </p>
 
-    <!-- Status Summary: Done vs In Progress vs Planned -->
+    <!-- Overview: Stack, Pipeline, Principles -->
     <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass p-6 rounded-3xl border-l-4 border-blue-500 space-y-2">
+            <h3 class="text-blue-400 font-extrabold text-xs uppercase tracking-widest flex items-center gap-2">
+                <i class="fas fa-microchip"></i> Hardware &amp; Software Stack
+            </h3>
+            <ul class="text-sm text-slate-300 leading-relaxed list-disc list-inside text-left space-y-1">
+                <li>Raspberry Pi 4 Model B (8 GB RAM) with Raspberry Pi OS</li>
+                <li>IDUINO 5-inch 800×480 touchscreen behind a two-way mirror</li>
+                <li>Logitech C270 USB webcam</li>
+                <li>Python, OpenCV and TensorFlow Lite runtime</li>
+            </ul>
+        </div>
+        <div class="glass p-6 rounded-3xl border-l-4 border-purple-500 space-y-2">
+            <h3 class="text-purple-400 font-extrabold text-xs uppercase tracking-widest flex items-center gap-2">
+                <i class="fas fa-project-diagram"></i> Processing Pipeline
+            </h3>
+            <ul class="text-sm text-slate-300 leading-relaxed list-disc list-inside text-left space-y-1">
+                <li>Capture frame and mirror-flip it</li>
+                <li>Haar cascade face detection for presence</li>
+                <li>Pose-landmark model: head, neck, shoulders, torso</li>
+                <li>Posture metrics with Good / Poor / Uncertain thresholds</li>
+                <li>Confidence filtering and temporal smoothing</li>
+            </ul>
+        </div>
         <div class="glass p-6 rounded-3xl border-l-4 border-green-500 space-y-2">
             <h3 class="text-green-400 font-extrabold text-xs uppercase tracking-widest flex items-center gap-2">
-                <i class="fas fa-check-circle"></i> What I Have Done (Phone → V1-A)
+                <i class="fas fa-shield-alt"></i> Design Principles
             </h3>
             <ul class="text-sm text-slate-300 leading-relaxed list-disc list-inside text-left space-y-1">
-                <li>Built the first mirror prototype directly on my Samsung phone (Android Studio, Kotlin, CameraX + ML Kit face detection)</li>
-                <li>Moved the project onto a Raspberry Pi 4 (8GB), IDUINO display and Logitech C270 webcam</li>
-                <li>Installed and tested OpenCV in a dedicated Python environment</li>
-                <li>Built the live mirror effect (horizontal flip) with date/time overlay</li>
-                <li>Implemented Haar Cascade face detection with PERSON DETECTED / WAITING status</li>
-                <li>Backed up the working V1-A code as a stable checkpoint</li>
-            </ul>
-        </div>
-        <div class="glass p-6 rounded-3xl border-l-4 border-amber-400 space-y-2">
-            <h3 class="text-amber-300 font-extrabold text-xs uppercase tracking-widest flex items-center gap-2">
-                <i class="fas fa-spinner"></i> What I Am Doing Now (V1-B)
-            </h3>
-            <ul class="text-sm text-slate-300 leading-relaxed list-disc list-inside text-left space-y-1">
-                <li>Selecting a Raspberry Pi-compatible pose-estimation model</li>
-                <li>Extracting body landmarks (head, neck, shoulders, torso)</li>
-                <li>Defining posture metrics and Good / Poor / Uncertain thresholds</li>
-                <li>Adding confidence filtering and temporal smoothing for stable results</li>
-            </ul>
-        </div>
-        <div class="glass p-6 rounded-3xl border-l-4 border-slate-600 space-y-2">
-            <h3 class="text-slate-400 font-extrabold text-xs uppercase tracking-widest flex items-center gap-2">
-                <i class="fas fa-map-signs"></i> What's Next (V1-C → V3)
-            </h3>
-            <ul class="text-sm text-slate-300 leading-relaxed list-disc list-inside text-left space-y-1">
-                <li>Fullscreen kiosk mode, autostart, two-way mirror assembly</li>
-                <li>Posture correction guidance and improvement detection</li>
-                <li>Affirmations and wellness reminders</li>
-                <li>Optional voice interaction and cloud integration</li>
+                <li>Privacy first: all processing is local, no images stored</li>
+                <li>Modular, so each stage can be tested and replaced</li>
+                <li>Supportive, non-medical, encouraging feedback</li>
+                <li>Optional cloud and voice, so it works offline</li>
             </ul>
         </div>
     </div>
@@ -223,7 +220,6 @@
 
     <!-- Phase 0: Samsung Phone -->
     <div class="glass p-6 rounded-3xl text-center space-y-3">
-        <span class="inline-block px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 text-[9px] font-bold uppercase tracking-widest">Done</span>
         <i class="fas fa-mobile-alt text-blue-300 text-3xl"></i>
         <h3 class="font-bold uppercase text-xs tracking-widest">Phase 0</h3>
         <p class="text-sm text-slate-200 font-semibold">
@@ -232,13 +228,12 @@
         <p class="text-sm text-slate-300 leading-relaxed text-left">
             First working mirror concept, built as an Android app using
             <span class="text-blue-300 font-semibold">Android Studio, Kotlin, CameraX and ML Kit</span>,
-            with face detection already running on-device.
+            with on-device face detection.
         </p>
     </div>
 
     <!-- Version V0 -->
     <div class="glass p-6 rounded-3xl text-center space-y-3">
-        <span class="inline-block px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 text-[9px] font-bold uppercase tracking-widest">Done</span>
         <i class="fas fa-microchip text-blue-500 text-3xl"></i>
         <h3 class="font-bold uppercase text-xs tracking-widest">Version 0</h3>
         <p class="text-sm text-slate-200 font-semibold">
@@ -247,17 +242,16 @@
         <p class="text-sm text-slate-300 leading-relaxed text-left">
             Set up the
             <span class="text-blue-400 font-semibold">Raspberry Pi 4 (8GB), IDUINO 5" display and Logitech C270 webcam</span>,
-            with OpenCV and Python environment prepared and tested.
+            with Raspberry Pi OS, OpenCV, Python and the TensorFlow Lite runtime.
         </p>
     </div>
 
     <!-- Version V1-A -->
-    <div class="glass p-6 rounded-3xl text-center space-y-3 ring-1 ring-blue-500/50">
-        <span class="inline-block px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 text-[9px] font-bold uppercase tracking-widest">Done</span>
+    <div class="glass p-6 rounded-3xl text-center space-y-3">
         <i class="fas fa-user text-blue-400 text-3xl"></i>
         <h3 class="font-bold uppercase text-xs tracking-widest">Version 1-A</h3>
         <p class="text-sm text-slate-200 font-semibold">
-            Presence & Interface <span class="text-blue-400">(Current)</span>
+            Presence & Interface
         </p>
         <p class="text-sm text-slate-300 leading-relaxed text-left">
             Live mirrored camera feed, date/time overlay, and
@@ -267,22 +261,20 @@
     </div>
 
     <!-- Version V1-B -->
-    <div class="glass p-6 rounded-3xl text-center space-y-3 ring-1 ring-amber-400/50">
-        <span class="inline-block px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-300 text-[9px] font-bold uppercase tracking-widest">In Progress</span>
+    <div class="glass p-6 rounded-3xl text-center space-y-3">
         <i class="fas fa-walking text-purple-400 text-3xl"></i>
         <h3 class="font-bold uppercase text-xs tracking-widest">Version 1-B</h3>
         <p class="text-sm text-slate-200 font-semibold">
             Posture Intelligence
         </p>
         <p class="text-sm text-slate-300 leading-relaxed text-left">
-            Pose estimation and body landmarks to measure alignment and classify posture as
+            A MediaPipe pose-landmark model (TFLite) gives body landmarks to measure alignment and classify posture as
             <span class="text-purple-400 font-semibold">Good / Poor / Uncertain</span>.
         </p>
     </div>
 
     <!-- Version V1-C -->
     <div class="glass p-6 rounded-3xl text-center space-y-3">
-        <span class="inline-block px-2 py-0.5 rounded-full bg-slate-500/15 text-slate-400 text-[9px] font-bold uppercase tracking-widest">Planned</span>
         <i class="fas fa-tools text-blue-500 text-3xl"></i>
         <h3 class="font-bold uppercase text-xs tracking-widest">Version 1-C</h3>
         <p class="text-sm text-slate-200 font-semibold">
@@ -296,7 +288,6 @@
 
     <!-- Version V2-A -->
     <div class="glass p-6 rounded-3xl text-center space-y-3">
-        <span class="inline-block px-2 py-0.5 rounded-full bg-slate-500/15 text-slate-400 text-[9px] font-bold uppercase tracking-widest">Planned</span>
         <i class="fas fa-comment-dots text-purple-500 text-3xl"></i>
         <h3 class="font-bold uppercase text-xs tracking-widest">Version 2-A</h3>
         <p class="text-sm text-slate-200 font-semibold">
@@ -311,7 +302,6 @@
 
     <!-- Version V2-B -->
     <div class="glass p-6 rounded-3xl text-center space-y-3">
-        <span class="inline-block px-2 py-0.5 rounded-full bg-slate-500/15 text-slate-400 text-[9px] font-bold uppercase tracking-widest">Planned</span>
         <i class="fas fa-heart text-blue-400 text-3xl"></i>
         <h3 class="font-bold uppercase text-xs tracking-widest">Version 2-B</h3>
         <p class="text-sm text-slate-200 font-semibold">
@@ -325,7 +315,6 @@
 
     <!-- Version V3 -->
     <div class="glass p-6 rounded-3xl text-center space-y-3">
-        <span class="inline-block px-2 py-0.5 rounded-full bg-slate-500/15 text-slate-400 text-[9px] font-bold uppercase tracking-widest">Planned</span>
         <i class="fas fa-cloud text-purple-400 text-3xl"></i>
         <h3 class="font-bold uppercase text-xs tracking-widest">Version 3</h3>
         <p class="text-sm text-slate-200 font-semibold">
@@ -345,7 +334,7 @@
     <!-- Architecture Image -->
     <div class="glass p-8 rounded-[2.5rem] text-center space-y-6">
         <h3 class="text-blue-400 font-bold uppercase text-xs tracking-widest">
-            System Architecture
+            Initial Concept: Phone-Based Architecture
         </h3>
 
         <img src="architecture.jpeg"
@@ -354,7 +343,7 @@
              onerror="this.src='https://via.placeholder.com/900x400?text=System+Architecture'">
 
         <h3 class="text-purple-400 font-bold uppercase text-xs tracking-widest pt-4">
-            Raspberry Pi Powered Architecture (Current Build)
+            Raspberry Pi Powered Architecture
         </h3>
         <img src="architecture2.jpeg"
              alt="Raspberry Pi Powered Smart Mirror System Architecture"
@@ -439,9 +428,8 @@
                 <p class="text-slate-300 leading-relaxed text-justify">
                     The Raspberry Pi-based prototype trades some of a traditional mirror's
                     simplicity and out-of-the-box stability for much greater customization,
-                    processing capability, and room to grow — face detection is already working,
-                    and the same hardware can carry posture intelligence and wellness features
-                    in later versions.
+                    processing capability, and room to grow — the same hardware that handles presence
+                    detection carries posture intelligence and wellness features across the versions.
                 </p>
             </div>
 
@@ -451,10 +439,9 @@
                     Final Conclusion
                 </h3>
                 <p class="text-slate-300 leading-relaxed text-justify">
-                    For the basic prototype, this was the version — a Raspberry Pi 4, display
-                    and webcam driving live mirroring and face detection with OpenCV.
-                    It is a modular, low-cost foundation that proves the concept and can be
-                    extended stage by stage toward posture correction and wellness assistance.
+                    A Raspberry Pi 4, touchscreen and webcam drive the live mirror, face detection and pose-based
+                    posture analysis with OpenCV and TensorFlow Lite. It is a modular, low-cost, private foundation that
+                    extends stage by stage toward posture correction, affirmations and wellness assistance.
                 </p>
             </div>
 
